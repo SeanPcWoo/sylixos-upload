@@ -122,7 +122,7 @@ async function uploadFiles (FtpClient, UploadXmlPath) {
                     }
                 });
             });
-            console.log(`[${count}/${total}][OK]\t${localPath}`);
+            console.log(`[${count}/${total}][OK]\t${localPath} => ${remotePath}`);
         } catch (err) {
             console.error(`[${count}/${total}][Failed]\t${err}`);
             continue;
