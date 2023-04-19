@@ -1,0 +1,16 @@
+{
+  "name":"sylixos-upload",
+  "version": "1.0.0",
+  "main": "upload.js",
+  "description": "upload sylixos project file to embedded board by ftp",
+  "author": {
+    "name": "wupengcheng",
+    "email": "wupengcheng@acoinfo.com"
+  },
+  "license": "MIT",
+  "bin": "upload.js",
+  "dependencies": {
+    "ftp": "^0.3.10",
+    "xml2js": "^0.5.0"
+  }
+}
