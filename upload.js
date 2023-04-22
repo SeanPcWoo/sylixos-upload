@@ -182,16 +182,18 @@ async function uploadFiles(FtpClient, UploadXmlPath) {
         const remotePath = XmlPath.value
 
         const matches = localPath.match(/\$\((.*?)\)/g);
-        for (const match of matches) {
-            const envVarName = match.substring(2, match.length - 1);
-            const envVarValue = process.env[envVarName];
+        if (matches) {
+            for (const match of matches) {
+                const envVarName = match.substring(2, match.length - 1);
+                const envVarValue = process.env[envVarName];
 
-            if (envVarValue) {
-                localPath = path.normalize(localPath.replace(match, envVarValue)).replace(/\\/g, '/');
-            } else {
-                console.error(`[${count}/${total}][Failed]\t ${localPath}: Environment variable ${envVarName} is not defined.`)
-                localPathOK = false;
-                break;
+                if (envVarValue) {
+                    localPath = path.normalize(localPath.replace(match, envVarValue)).replace(/\\/g, '/');
+                } else {
+                    console.error(`[${count}/${total}][Failed]\t ${localPath}: Environment variable ${envVarName} is not defined.`)
+                    localPathOK = false;
+                    break;
+                }
             }
         }
 
